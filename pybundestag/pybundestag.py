@@ -8,7 +8,7 @@ import json
 import pandas as pd
 
 ###Parse User Arguments###
-parser = argparse.ArgumentParser(description='Process Arguments for Parsing of Bundestag Protocolls.')
+parser = argparse.ArgumentParser(description='Parse Bundestag Protocolls to CSV or JSON Files')
 parser.add_argument("-i", "--input", required = True, 
                     help = "Input for Parsing. If Folder, all XML Files are parsed")
 parser.add_argument("-o", "--output", required = True,
@@ -16,20 +16,12 @@ parser.add_argument("-o", "--output", required = True,
 parser.add_argument("-s", "--seperator", required = False, default = ",", 
                     help = "Seperator for csv File")
 parser.add_argument("-m", "--meta", required = False, default = False,
-                    help="increase output verbosity",
+                    help="Flag for whether or not meta data should be added",
                     action="store_true")
 
 args = parser.parse_args()
 
-####TEMP INPUT FOR TESTING####
-args.input = "/home/joshuahruzik/Entwicklung/pybundestag/Folder/"
-args.output = "/home/joshuahruzik/test.json"
-args.seperator = ","
-args.meta = True
-
 output_extension = re.search("(?<=\.)\w+$", args.output).group()
-
-
 
 
 ###Catch Bad User Input###
@@ -56,7 +48,8 @@ if len(content) == 1:
     speeches = speechparser.collect_speeches(soup, output = extension_dict[output_extension], 
                                              metadata = args.meta)
     if output_extension == "csv":
-        speeches.to_csv(args.output, encoding = "utf-8", index = False)
+        speeches.to_csv(args.output, sep = args.seperator,
+                        encoding = "utf-8", index = False)
     elif output_extension == "json":
         with open(args.output, mode = "w", encoding = "utf-8") as f:
             f.writelines(speeches)
@@ -76,7 +69,8 @@ if len(content) > 1:
         speeches_list.extend(speeches_tmp)
     if output_extension == "csv":
         result_df = pd.DataFrame(speeches_list)
-        result_df.to_csv(args.output, encoding = "utf-8", index = False)
+        result_df.to_csv(args.output, sep = args.seperator, 
+                         encoding = "utf-8", index = False)
     elif output_extension == "json":
         with open(args.output, mode = "w", encoding = "utf-8") as f:
             result = json.dumps(speeches_list, ensure_ascii = False, indent = 1)
@@ -85,4 +79,4 @@ if len(content) > 1:
         raise ValueError("Your output format {} is neither 'csv' or 'json'.".format(output_extension))
 
 ###Print Success###
-print("Speeches written to: {}".format(args.output))
+print("\nSpeeches written to: {}".format(args.output))
