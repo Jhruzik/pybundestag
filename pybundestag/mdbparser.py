@@ -120,3 +120,68 @@ def parse_personal(mdb):
             }
     
     return(personal_dict)
+    
+#Look Up Plenary Period Specific Information for MdB#
+def parse_period(personalid, period, mdbs, institutions = None):
+    #Convert Input to str#
+    personalid = str(personalid)
+    period = str(period)
+    #Filter List of MdBs to personalid#
+    try:
+        mdb_result = [x for x in mdbs if x.find("id").get_text() == personalid][0]
+    except IndexError:
+        raise ValueError("Argument personalid does not exist")
+    #Filter List of Plenary Periods to period#
+    periods_mdb = mdb_result.find_all("wahlperiode")
+    try:
+        period_result = [x for x in periods_mdb if x.find("wp").get_text() == period][0]
+    except IndexError:
+        raise ValueError("MdB seems not be part of Plenary Period")
+    #Extract Information for given Period#
+    #Electoral District#
+    try:
+        district = period_result.find("wkr_name").get_text()
+        if district == "":
+            district = None
+    except Exception:
+        district = None
+    #Mandate#
+    try:
+        mandate = period_result.find("mandatsart").get_text()
+    except Exception:
+        mandate = None
+    #List#
+    try:
+        elec_list = period_result.find("liste").get_text()
+    except Exception:
+        elec_list = None
+    #Check for Institution Membership#
+    if type(institutions) is list:
+        membership_dict = dict()
+        try:
+            mdb_institutions = [x.get_text() for x in period_result.find_all("ins_lang")]
+        except:
+            mdb_institutions = []
+        for institution in institutions:
+            if institution in mdb_institutions:
+                membership_dict[institution] = True
+            else:
+                membership_dict[institution] = False
+    elif type(institutions) is not None:
+        raise ValueError("institutions should either be a list or None")
+    
+    #Collect to Result Dict#
+    result_dict = {
+            "period" : period,
+            "district" : district,
+            "mandate" : mandate,
+            "list" : elec_list,
+            }
+    #Add Institution Membership if present#
+    try:
+        for institution in membership_dict:
+            result_dict[institution] = membership_dict[institution]
+    except:
+        pass
+    
+    return(result_dict)
