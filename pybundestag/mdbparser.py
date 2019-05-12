@@ -144,54 +144,53 @@ def parse_personal(mdb):
     return(personal_dict)
     
 # Look Up Plenary Period Specific Information for MdB
-def parse_period(personalid, period, mdbs, institutions = None):
-    """Parse information of a single MdB for a specific 
-       parliamentary period.
+def parse_period(mdb, period, institutions = None):
+    """Gather period specific data for a MdB
     
-    Given the ID of a single MdB and a parliamentary
-    period, this function will return information specific
-    to that MdB and parliamentary period.
+    Given a single mdb and a parliamentary period,
+    this function will return information specific 
+    to that MdB during the specified parliamentary
+    period. This includes the MdB's electoral
+    district, mandate type and electoral list.
+    
+    You can also check, if the MdB was a member of
+    one or more institutions. This might include 
+    committees or factions.
     
     Parameters
     -----------
-    personalid: str
-        The unique identifier for every MdB.
-    
+    mdb: BeautifulSoup
+        A single element of read_mdbs output, representing
+        a single member of the German Bundestag.
+        
     period: int
-        The parliamentary period you seek information for.
+        The parliamentary session you want information
+        for.
         
-    mdbs: BeautifulSoup
-        Output from read_mdbs function.
-        
-    institutions: list of str [optional]
-        You can check if the MdB is part of the
-        specified institutions. Could be anything
-        from factions to committees. This must be a
-        list of strings. Make sure that spelling is
-        correct.
+    institutions: list of str [optional]; default: None
+        A list of institutions to check for whether or
+        not the MdB was a member in during the
+        parliamentary period.
         
     Returns
     -----------
-    result_dict: Dict
-        A dictionary containing the period, electoral
-        district, mandate type, and name of the 
-        electoral list. If institutions is specified,
-        there will be a key member_INSTITUTION with
-        a boolean value. True implies that the MdB
-        is part of that institution during the
-        parliamentary period while False would imply 
-        the contrary.
+    period_dict: Dict
+        A dictionary containing period specific
+        information for an MdB. This information
+        includes the electoral district,
+        mandate type, and electoral list. If a
+        list of institutions was defined, there
+        will be a key for every institution in the
+        form of 'member_*' where the asteriks is a
+        placeholder for the institution. True
+        implies that the MdB was a member of that
+        institution during the period, while False
+        would impy otherwise.
     """
     # Convert Input to str
-    personalid = str(personalid)
     period = str(period)
-    # Filter List of MdBs to personalid
-    try:
-        mdb_result = [x for x in mdbs if x.find("id").get_text() == personalid][0]
-    except IndexError:
-        raise ValueError("Argument personalid does not exist")
     # Filter List of Parliamentary Periods to Period
-    periods_mdb = mdb_result.find_all("wahlperiode")
+    periods_mdb = mdb.find_all("wahlperiode")
     try:
         period_result = [x for x in periods_mdb if x.find("wp").get_text() == period][0]
     except IndexError:
@@ -230,7 +229,7 @@ def parse_period(personalid, period, mdbs, institutions = None):
         raise ValueError("Institutions should either be a list or None")
     
     # Collect to Result Dict
-    result_dict = {
+    period_dict = {
             "period" : period,
             "district" : district,
             "mandate" : mandate,
@@ -239,11 +238,12 @@ def parse_period(personalid, period, mdbs, institutions = None):
     # Add Institution Membership if present
     try:
         for institution in membership_dict:
-            result_dict[institution] = membership_dict[institution]
+            period_dict[institution] = membership_dict[institution]
     except:
         pass
     
-    return(result_dict)
+    # Return Result
+    return(period_dict)
     
     
 # Reduce List of MdBs to a certain Parliamentary Period
