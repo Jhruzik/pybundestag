@@ -320,9 +320,9 @@ def collect_mdbs(mdbs, output = "dataframe", period = None, institutions = None)
         try:
             personal_dict = parse_personal(mdb)
             if period is not None:
-                personalid = personal_dict["id"]
-                period_dict = parse_period(personalid = personalid, period = period,
-                                           mdbs = mdbs, institutions = institutions)
+                period_dict = parse_period(mdb = mdb,
+                                           period = period,
+                                           institutions = institutions)
             else:
                 period_dict = {}
             mdb_dict = {**personal_dict, **period_dict}
