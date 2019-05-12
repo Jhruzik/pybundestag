@@ -31,15 +31,6 @@ if __name__ == "__main__":
                             help = "Check for MdB membership of specified institutions (seperated by ';')")
     args = arg_parser.parse_args()
     
-    ###ARGUMENTS FOR TESTING###
-    args.entity = "mdb"
-    args.input = "/home/joshuahruzik/Entwicklung/pybundestag/MDB_STAMMDATEN.XML"
-    args.output = "/home/joshuahruzik/mdbs.json"
-    args.seperator = ";"
-    args.meta = True
-    args.period = "17"
-    args.institutions = "Ausschuss für Menschenrechte und humanitäre Hilfe;Testausschuss"
-    
     # Wrangle Arguments
     output_extension = re.search("(?<=\.)\w+$", args.output).group()
     args.entity = args.entity.lower()
@@ -140,4 +131,6 @@ if __name__ == "__main__":
                     f.writelines(mdbs)
             else:
                 raise ValueError("Your output format {} is neither 'csv' or 'json'.".format(output_extension))
-            
+                
+        # Exit with Success
+        print("\nMdBs written to: {}".format(args.output))
