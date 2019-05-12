@@ -23,13 +23,13 @@ def read_mdbs(path):
     -----------
     path : string
         The path to the master data as provided by the
-        Bundestag. Must be a valid xml file.
+        Bundestag. Must be a valid XML file.
         
     Returns
     -----------
     mdbs : BeautifulSoup
         A BeautifulSoup object used for further parsing.
-        Contains all MdB in file.
+        Contains all MdBs in file.
     """
     with open(path, mode = "r", encoding = "utf-8") as f:
         soup = BeautifulSoup(f.read(), "lxml")
@@ -38,25 +38,25 @@ def read_mdbs(path):
         
 # Get Personal Information of Single MDB
 def parse_personal(mdb):
-    """Get personal information of a single MdB.
+    """Get personal information of a single MdB
     
     Given a single MdB as input, this function will yield
     a dictionary with personal information. This also 
-    includes the name, gender, CV, and many other
-    informations.
+    includes the name, gender, CV, and more
+    information.
     
     Parameters
     -----------
     mdb: BeautifulSoup
         A single element of read_mdbs output, representing
-        a member of the German Bundestag.
+        a single member of the German Bundestag.
         
     Returns
     -----------
     personal_dict: Dict
-        A Dictionary containing personal information on
+        A dictionary containing personal information on
         a single member of the German Bundestag. This
-        inclued a unique ID, name, academic title,
+        includes a unique ID, name, academic title,
         year of birth, place of birth, year of death,
         gender, party affiliation, occupation,
         and a short CV.
@@ -145,23 +145,23 @@ def parse_personal(mdb):
     
 # Look Up Plenary Period Specific Information for MdB
 def parse_period(personalid, period, mdbs, institutions = None):
-    """Parse information if a singel MdB for a specific 
+    """Parse information of a single MdB for a specific 
        parliamentary period.
     
-    Given the ID of a single MdB and a plenary period,
-    this function will return information specific
-    to that MdB and plenary period.
+    Given the ID of a single MdB and a parliamentary
+    period, this function will return information specific
+    to that MdB and parliamentary period.
     
     Parameters
     -----------
     personalid: str
-        The unique identifier for every MdB in history.
+        The unique identifier for every MdB.
     
     period: int
-        The plenary period you want information from.
+        The parliamentary period you seek information for.
         
     mdbs: BeautifulSoup
-        Output from read_mdbs() function.
+        Output from read_mdbs function.
         
     institutions: list of str [optional]
         You can check if the MdB is part of the
@@ -175,12 +175,12 @@ def parse_period(personalid, period, mdbs, institutions = None):
     result_dict: Dict
         A dictionary containing the period, electoral
         district, mandate type, and name of the 
-        electoral list. If institutions is specified
+        electoral list. If institutions is specified,
         there will be a key member_INSTITUTION with
         a boolean value. True implies that the MdB
         is part of that institution during the
-        plenary period while False would imply the
-        contrary.
+        parliamentary period while False would imply 
+        the contrary.
     """
     # Convert Input to str
     personalid = str(personalid)
@@ -190,12 +190,12 @@ def parse_period(personalid, period, mdbs, institutions = None):
         mdb_result = [x for x in mdbs if x.find("id").get_text() == personalid][0]
     except IndexError:
         raise ValueError("Argument personalid does not exist")
-    # Filter List of Plenary Periods to Period
+    # Filter List of Parliamentary Periods to Period
     periods_mdb = mdb_result.find_all("wahlperiode")
     try:
         period_result = [x for x in periods_mdb if x.find("wp").get_text() == period][0]
     except IndexError:
-        raise ValueError("MdB seems not be part of Plenary Period")
+        raise ValueError("MdB seems not be part of parliamentary period")
     # Extract Information for given Period
     # Electoral District
     try:
@@ -227,7 +227,7 @@ def parse_period(personalid, period, mdbs, institutions = None):
             else:
                 membership_dict["member_"+institution] = False
     elif institutions is not None:
-        raise ValueError("institutions should either be a list or None")
+        raise ValueError("Institutions should either be a list or None")
     
     # Collect to Result Dict
     result_dict = {
@@ -246,7 +246,7 @@ def parse_period(personalid, period, mdbs, institutions = None):
     return(result_dict)
     
     
-# Reduce List of MdBs to a certain Plenary Period
+# Reduce List of MdBs to a certain Parliamentary Period
 def _reduce_to_period(mdbs, period):
     # Convert Period to String
     period = str(period)
@@ -267,27 +267,27 @@ def collect_mdbs(mdbs, output = "dataframe", period = None, institutions = None)
        a dataframe, json, or list.
     
     Using this function, you can collect all the 
-    MdBs in read_mdbs() output into a pandas 
+    MdBs in read_mdbs' output into a pandas 
     DataFrame, a json string, or a  python list. 
     This data can be used for further analysis.
     
     Parameters
     -----------
     mdbs: BeautifulSoup
-        Output from read_mdbs() function.
+        Output from read_mdbs function.
         
     output: string
         Either 'dataframe', 'json', or 'list'.
         'dataframe' will result in a pandas
-        dataframe. 'json' will be a json
+        DataFrame. 'json' will be a json
         string and 'list' is a Python list
         of dictionaries. Defaults to
         'dataframe'
         
     period: int [optional]
-        If you want to collect only for a
-        certain plenary period, you can specify
-        this period as an integer.
+        If you want to collect data only for a
+        certain parliamentary period, you can 
+        specify this period as an integer.
         
     institutions: list of str [optional]
         You can include dummy variables for membership
@@ -307,11 +307,11 @@ def collect_mdbs(mdbs, output = "dataframe", period = None, institutions = None)
         'list' will result in a Python list of
         dictionaries.
     """
-    # React to presence of period
+    # React to Presence of Period
     if period is not None:
         # Convert Number to String
         period = str(period)
-        # Filter out irrelevant MdBs
+        # Filter out Irrelevant MdBs
         mdbs = _reduce_to_period(mdbs, period)
     # Init List to collect Results
     result_list = []
