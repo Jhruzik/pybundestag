@@ -16,10 +16,13 @@ Make sure that you install those modules. If you want to use pip, you can instal
 pip install beautifulsoup4 pandas
 ```
 
-Since pybundestag is hosted only on Github, proceed by downloading this repository (click on 'Clone or download' and then 'ZIP') and unzip it into a destination of your choice.
+Since pybundestag is hosted on Github, proceed by downloading this repository (click on 'Clone or download' and then 'ZIP') and unzip it into a destination of your choice. Executables for Linux and Windows will follow soon.
 
-pybundestag will be published on PyPi soon so that you can install it via pip.
+If you want to use the parsers in your script, you can install pybundestag via pip.
 
+```bash
+python pip install pybundestag
+```
 ### Usage
 
 You can use a consistent syntax  within pybundestag for converting both protocols and the MdB XML file. The general syntax is like this:
