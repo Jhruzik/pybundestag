@@ -3,7 +3,7 @@ Since the 19th plenary period of the German Bundestag, all protocols are publish
 
 This Python CLI tool is designed to convert one or more protocols into a single csv or json file. This way, data scientists can use the output for further processing.
 
-###Installation
+### Installation
 You will need a copy of Python3 on your computer. There is also the need for two external modules that are not built-in in Python3:
 *BeautifulSoup
 *Pandas
@@ -16,7 +16,9 @@ pip install beautifulsoup4 pandas
 
 Since pybundestag is hosted only on Github, proceed by downloading this repository (click on 'Clone or download' and then 'ZIP') and unzip it into a destination of your choice.
 
-###Usage
+pybundestag will be published on PyPi so that you can install it via pip.
+
+### Usage
 Make sure that you download all the protocols you want to convert as xml files. Keep in mind that you can convert only those documents that were created during or after the 19th plenary period. If you want to convert multiple protocols at once, put them into a single folder.
 After you've downloaded all the xml files that you would like to convert, open you operating system's command line terminal and go into where pybundestag resides.
 
@@ -47,6 +49,6 @@ Of course, you can change the name of your output file from *output.csv* to *out
 
 All output files will be encoded in UTF-8. 
 
-###Links
+### Links
 You can find all the protocols of the German Bundestag as xml files at the [official website](https://www.bundestag.de/services/opendata).
 There is a GitHub organization centered around the German Bundestag called [bundestag](https://github.com/bundestag). There you can find many more repositories for Python and other languages.
