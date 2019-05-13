@@ -118,6 +118,11 @@ def parse_speech(speech):
     # Parse Information Regarding Speaker
     try:
         speaker = speech.find("redner")
+        # Parse Speaker ID
+        try:
+            id_speaker = speaker["id"]
+        except Exception:
+            id_speaker = None
         # Parse First Name
         try:
             firstname = speaker.find("vorname").get_text()
@@ -139,31 +144,41 @@ def parse_speech(speech):
         except Exception:
             role = None
         # Collect Results to Dictionary
-        speaker_dict = {"firstname" : firstname,
+        speaker_dict = {"id_speaker" : id_speaker,
+                        "firstname" : firstname,
                         "lastname" : lastname,
                         "name" : firstname + " " + lastname,
                         "party" : party,
                         "role" : role}
     # Create Missing Values if no Speaker is associated to Speech
     except Exception:
-        speaker_dict = {"firstname" : None,
+        speaker_dict = {"id_speaker" : None,
+                        "firstname" : None,
                         "lastname" : None,
                         "name" : None,
                         "party" : None,
                         "role" : None}
-    
-    # Parse Text of Speech
+    # Parse Speech
+        # Parse ID of Speech
+    try:
+        id_speech = speech["id"]
+    except Exception:
+        id_speech = None
+        # Parse Text of Speech
     try:
         text = speech.find_all("p", {"klasse" : ["J", "J_1", "O"]})
         text = "\n".join([x.get_text() for x in text])
     except Exception:
         text = None
+
     
     # Join Information on Name, Party, Role, and Text into single
     # Dictionary
-    speech_dict = {"Speaker" : speaker_dict["name"], 
-                   "Party" : speaker_dict["party"],
+    speech_dict = {"SpeakerID" : speaker_dict["id_speaker"],
+                   "Speaker" : speaker_dict["name"], 
+                   "Faction" : speaker_dict["party"],
                    "Role" : speaker_dict["role"],
+                   "SpeechID" : id_speech,
                    "Text" : text}
     return(speech_dict)
     
@@ -206,10 +221,10 @@ def collect_speeches(protocol, output = "dataframe", metadata = False):
     for speech in protocol.find_all("rede"):
         result = parse_speech(speech)
         if metadata:
-            result["location"] = meta["location"]
-            result["date"] = meta["date"]
-            result["period"] = meta["period"]
-            result["session"] = meta["session"]
+            result["Location"] = meta["location"]
+            result["Date"] = meta["date"]
+            result["Period"] = meta["period"]
+            result["Session"] = meta["session"]
         result_list.append(result)
     if output == "dataframe":
         result = pd.DataFrame(result_list)

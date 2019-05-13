@@ -127,18 +127,18 @@ def parse_personal(mdb):
     
     # Collect to Dict
     personal_dict = {
-            "id" : personalid,
-            "firstname" : firstname,
-            "lastname" : lastname,
-            "name" : " ".join([firstname, lastname]),
-            "academic" : acad,
-            "birthyear" : birthyear,
-            "birthplace" : birthplace,
-            "deathyear" : death,
-            "gender" : gender,
-            "party" : party,
-            "occupation" : occupation,
-            "vita" : vita
+            "ID" : personalid,
+            "FirstName" : firstname,
+            "LastName" : lastname,
+            "Name" : " ".join([firstname, lastname]),
+            "AcademicTitle" : acad,
+            "BirthYear" : birthyear,
+            "BirthPlace" : birthplace,
+            "DeathYear" : death,
+            "Gender" : gender,
+            "Party" : party,
+            "Occupation" : occupation,
+            "Vita" : vita
             }
     
     return(personal_dict)
@@ -230,10 +230,10 @@ def parse_period(mdb, period, institutions = None):
     
     # Collect to Result Dict
     period_dict = {
-            "period" : period,
-            "district" : district,
-            "mandate" : mandate,
-            "list" : elec_list,
+            "Period" : period,
+            "District" : district,
+            "Mandate" : mandate,
+            "List" : elec_list,
             }
     # Add Institution Membership if present
     try:

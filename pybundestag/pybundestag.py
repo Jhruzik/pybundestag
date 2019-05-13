@@ -79,6 +79,9 @@ if __name__ == "__main__":
             else:
                 raise ValueError("Your output format {} is neither 'csv' or 'json'.".format(output_extension))
                 
+            # Exit with Success
+            print("Speeches written to: {}".format(args.output))
+                
         # Parse if Input is a Folder
         elif len(content) > 1:
             # Init Counter and Result List for Loop
@@ -104,11 +107,14 @@ if __name__ == "__main__":
                 with open(args.output, mode = "w", encoding = "utf-8") as f:
                     result = json.dumps(speeches_list, ensure_ascii = False, indent = 1)
                     f.writelines(result)
+                    
+            # Exit with Success
+            print("\nSpeeches written to: {}".format(args.output))
+            
         else:
             raise ValueError("Your output format {} is neither 'csv' or 'json'.".format(output_extension))
 
-        # Exit with Success
-        print("\nSpeeches written to: {}".format(args.output))
+        
 
     # Parse MdBs
     if args.entity == "mdb":
@@ -133,4 +139,4 @@ if __name__ == "__main__":
                 raise ValueError("Your output format {} is neither 'csv' or 'json'.".format(output_extension))
                 
         # Exit with Success
-        print("\nMdBs written to: {}".format(args.output))
+        print("MdBs written to: {}".format(args.output))
