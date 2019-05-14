@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="pybundestag",
-    version="0.0.11",
+    version="0.0.17",
     author="Joshua Hruzik",
     author_email="joshua.hruzik@gmail.com",
     description="Package to parse Bundestag data",
@@ -13,7 +13,7 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/Jhruzik/pybundestag",
     packages=setuptools.find_packages(),
-    install_requires=["pandas", "bs4"],
+    install_requires=["pandas", "bs4", "lxml"],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
@@ -23,4 +23,9 @@ setuptools.setup(
         "Intended Audience :: Science/Research",
         "Topic :: Text Processing"
     ],
+    entry_points = {
+            "console_scripts" : [
+                    "pybundestag = pybundestag.__main__:main"
+                    ]
+            }
 )

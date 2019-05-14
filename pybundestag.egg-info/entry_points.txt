@@ -1,0 +1,3 @@
+[console_scripts]
+pybundestag = pybundestag.__main__:main
+

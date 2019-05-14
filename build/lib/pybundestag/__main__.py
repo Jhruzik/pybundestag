@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-if __name__ == "__main__":
+def main():
 
     
     # Preliminaries
 
         # Import Modules
-    import parser.speechparser
-    import parser.mdbparser
+    import pybundestag.parser.speechparser
+    import pybundestag.parser.mdbparser
     import argparse
     import os
     import re
@@ -64,8 +64,8 @@ if __name__ == "__main__":
         # Parse if Input is Single File
         if len(content) == 1:
             # Read in Single Protocol and collect all Speeches
-            protocol = parser.speechparser.read_protocol(content[0])
-            speeches = parser.speechparser.collect_speeches(protocol,
+            protocol = pybundestag.parser.speechparser.read_protocol(content[0])
+            speeches = pybundestag.parser.speechparser.collect_speeches(protocol,
                                                             output = extension_dict[output_extension],
                                                             metadata = args.meta)
             # Write CSV to Output Path
@@ -92,8 +92,8 @@ if __name__ == "__main__":
                 # Parse Single File and append Output to Result List
                 print("\rParsing File: {} of {}".format(parser_count, conent_len), end = "")
                 parser_count += 1
-                protocol = parser.speechparser.read_protocol(file)
-                speeches_tmp = parser.speechparser.collect_speeches(protocol, 
+                protocol = pybundestag.parser.speechparser.read_protocol(file)
+                speeches_tmp = pybundestag.parser.speechparser.collect_speeches(protocol, 
                                                                     output = "list", 
                                                                     metadata = args.meta)
                 speeches_list.extend(speeches_tmp)
@@ -122,8 +122,8 @@ if __name__ == "__main__":
         # Parse if Input is Single File
         if len(content) == 1:
             # Read in Single MdB List and collect all MdBs
-            mdbs = parser.mdbparser.read_mdbs(content[0])
-            mdbs = parser.mdbparser.collect_mdbs(mdbs = mdbs,
+            mdbs = pybundestag.parser.mdbparser.read_mdbs(content[0])
+            mdbs = pybundestag.parser.mdbparser.collect_mdbs(mdbs = mdbs,
                                                  output = extension_dict[output_extension],
                                                  period = args.period,
                                                  institutions = args.institutions)
@@ -140,3 +140,7 @@ if __name__ == "__main__":
                 
         # Exit with Success
         print("MdBs written to: {}".format(args.output))
+        
+
+if __name__ == "__main__":
+    main()
