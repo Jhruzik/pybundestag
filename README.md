@@ -6,45 +6,36 @@ Also, the Bundestag publishes information on all current and former members (MdB
 This Python CLI tool is designed to convert protocols and the file on all MdBs into single csv or json files. This way, data scientists can use the output for further processing.
 
 ### Installation
-You will need a copy of Python3 on your computer. There is also the need for two external modules that are not built-in in Python3:
-*BeautifulSoup
-*Pandas
-
-Make sure that you install those modules. If you want to use pip, you can install them with the following command in your operating system's terminal (e.g. cmd on Windows or Bash on Linux):
+You can install pybundestag via pip.
 
 ```bash
-pip install beautifulsoup4 pandas
+pip install pybundestag
 ```
 
-Since pybundestag is hosted on Github, proceed by downloading this repository (click on 'Clone or download' and then 'ZIP') and unzip it into a destination of your choice. Executables for Linux and Windows will follow soon.
+After installation has finished, you have the choice to use pybundestag as a CLI tool or input its parsers into one of your scripts.
 
-If you want to use the parsers in your script, you can install pybundestag via pip.
-
-```bash
-python pip install pybundestag
-```
 ### Usage
 
-You can use a consistent syntax  within pybundestag for converting both protocols and the MdB XML file. The general syntax is like this:
+You can use a consistent syntax within pybundestag for converting both protocols and the MdB XML file. The general syntax in CLI mode is like this:
 
 ```bash
-python bundestag.py entity input output
+pybundestag entity input output
 ```
 
-entity can either be 'protocol' or 'mdb', depending on the task at hand. If you want to parse protocols, choose 'protocol'. If you want to convert the MdB XML file, use 'mdb'. 'input' should be the path of your protocol(s) or MdB XML file while output is the desired path of your output. When parsing Bundestag protocols, you can also specify a folder and pybundestag will parse all XML files in that folder. Both 'protocol' and 'mdb' support several optional arguments.
+entity can either be 'protocol' or 'mdb', depending on the task at hand. If you want to parse protocols, choose 'protocol'. If you want to convert the MdB XML file, use 'mdb'. 'input' should be the path of your protocol(s) or the MdB XML file, while output is the desired path of your output. When parsing Bundestag protocols, you can also specify a folder and pybundestag will parse all XML files in that folder. Both 'protocol' and 'mdb' support several optional arguments.
 
 #### Parsing of Protcols
-Make sure that you download all the protocols as XML files you want to convert. Keep in mind that you can convert only those documents that were created during or after the 19th parliamentary period. If you want to convert multiple protocols at once, put them into a single folder.
+Make sure that you download all the protocols you want to convert as XML files. Keep in mind that you can convert only those documents that were created during or after the 19th parliamentary period. If you want to convert multiple protocols at once, put them into a single folder.
 After you've downloaded all the XML files that you would like to convert, open you operating system's command line tool and go into where pybundestag resides.
 
 You can use the CLI interface as discussed above. However, you can also use the following optional arguments:
 * -m [--meta]: If present, pybundestag will add meta information to every speech (Date, Location, Plenary Period, and Plenary Session).
 * -s [--seperator]: A custom seperator for your csv file (defaults to ","). Make sure that you put quotation marks around your seperator.
 
-Assume that you want to convert a single file in */home/MaxMustermann/rede.xml* and you want to convert it into a csv file under */home/MaxMustermann/output.csv* without meta data and using the default seperator. Also, assume that you are within the pybundestag folder. You can use pybundestag like so:
+Assume that you want to convert a single file in */home/MaxMustermann/rede.xml* and you want to convert it into a csv file under */home/MaxMustermann/output.csv* without meta data and using the default seperator. You can use pybundestag like so:
 
 ```bash
-python pybundestag.py protocol /home/MaxMustermann/rede.xml /home/MaxMustermann/output.csv
+pybundestag protocol /home/MaxMustermann/rede.xml /home/MaxMustermann/output.csv
 ```
 
 After the script is done, you will get a message that your output was written to the desired path.
@@ -52,10 +43,10 @@ After the script is done, you will get a message that your output was written to
 If we assume that there are multiple XML files under */home/MaxMustermann/reden/* and you want to convert those files into a single csv file with meta data and a semicolon as a seperator, you can invoke pybundestag like so:
 
 ```bash
-python pybundestag.py protocol /home/MaxMustermann/reden/ /home/MaxMustermann/output.csv -m -s ";"
+pybundestag protocol /home/MaxMustermann/reden/ /home/MaxMustermann/output.csv -m -s ";"
 ```
 
-You will see the current progress of the program printed to the screen and you will receive a message that your output was written to the desired path. The resulting csv file will contain the speeche's unique Id, Date, Faction of speaker, Location, Parliamentary Period, Role of Speaker, Session, Name of Speaker, ID of Speaker, and the raw text (stripped of comments).
+You will see the current progress of the program printed to the screen and you will receive a message that your output was written to the desired path. The resulting csv file will contain the speeches' unique Id, Date, Faction of speaker, Location, Parliamentary Period, Role of Speaker, Session, Name of Speaker, ID of Speaker, and the raw text (stripped of comments).
 
 Of course, you can change the name of your output file from *output.csv* to *output.json* if you prefer to write to a json file. Note, that your choice of a seperator will be ignored then.
 
@@ -68,7 +59,7 @@ There are also some optional arguments you can use:
 
 If you simply want to convert all MdBs in */home/MaxMustermann/mdbs.xml* to */home/MaxMustermann/mdbs.csv*, you would use pybundestag like so:
 ```bash
-python pybundestag.py mdb /home/MaxMustermann/mdbs.xml /home/MaxMustermann/mdbs.csv
+pybundestag mdb /home/MaxMustermann/mdbs.xml /home/MaxMustermann/mdbs.csv
 ```
 
 This will yield a csv file containing personal information (e.g. name, and date of birth, gender, etc.) as well as a short cv and a unique ID.
@@ -76,7 +67,7 @@ This will yield a csv file containing personal information (e.g. name, and date 
 A more complex example would be if you want to extract all MdBs of the 19th parliamentary period to a json file, while also checking if a given MdB was member of the 'Verteidigungsausschuss' and/or  'Ausschuss für Arbeit und Soziales':
 
 ```Bash
-python pybundestag.py mdb /home/MaxMustermann/mdbs.xml /home/MaxMustermann/mdbs.json -p 19 -i "Verteidigungsausschuss;Ausschuss für Arbeit und Soziales"
+pybundestag mdb /home/MaxMustermann/mdbs.xml /home/MaxMustermann/mdbs.json -p 19 -i "Verteidigungsausschuss;Ausschuss für Arbeit und Soziales"
 ```
 
 This file will not only contain personal information, a unique ID, and a short CV but also period specific information and two dummy variables 'member_Verteidigungsausschuss' and 'member_Ausschuss für Arbeit und Soziales'.
