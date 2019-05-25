@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="pybundestag",
-    version="0.0.17",
+    version="0.0.2",
     author="Joshua Hruzik",
     author_email="joshua.hruzik@gmail.com",
     description="Package to parse Bundestag data",

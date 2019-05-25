@@ -59,7 +59,7 @@ def parse_personal(mdb):
         includes a unique ID, name, academic title,
         year of birth, place of birth, year of death,
         gender, party affiliation, occupation,
-        and a short CV.
+        parliamentary periods and a short CV.
     """
     # Parse Id
     try:
@@ -117,8 +117,16 @@ def parse_personal(mdb):
             occupation = None
         else:
             occupation = occupation.split(", ")
+            occupation = ";".join(occupation)
     except Exception:
         occupation = None
+    # Parse Parliamentary Periods
+    try:
+        period = mdb.find_all("wp")
+        period = [x.get_text() for x in period]
+        period = ";".join(period)
+    except Exception:
+        period = None
     # Parse Vita
     try:
         vita = mdb.find("vita_kurz").get_text()
@@ -138,6 +146,7 @@ def parse_personal(mdb):
             "Gender" : gender,
             "Party" : party,
             "Occupation" : occupation,
+            "Period" : period,
             "Vita" : vita
             }
     
