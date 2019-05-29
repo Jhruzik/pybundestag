@@ -1,0 +1,86 @@
+1559162803951	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.R1M35RYWoPZc"
+1559162804315	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1559162804315	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1559162804315	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+1559162805264	Marionette	INFO	Listening on port 33377
+1559162805357	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://www.bundestag.de/resource/js/441486/0/420aea80c9d3030cd23f4fb87cab3e66/body.js, line 1: unreachable code after return statement
+JavaScript warning: https://www.bundestag.de/resource/js/441486/0/420aea80c9d3030cd23f4fb87cab3e66/body.js, line 1: unreachable code after return statement
+1559162806718	Marionette	INFO	Stopped listening on port 33377
+[Parent 10441, Gecko_IOThread] WARNING: pipe error (78): Connection reset by peer: file /build/firefox/src/mozilla-unified/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 357
+1559162808988	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.YfqD16Vcw450"
+1559162809346	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1559162809347	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1559162809347	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+1559162810291	Marionette	INFO	Listening on port 36933
+1559162810393	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://www.bundestag.de/resource/js/441486/0/420aea80c9d3030cd23f4fb87cab3e66/body.js, line 1: unreachable code after return statement
+JavaScript warning: https://www.bundestag.de/resource/js/441486/0/420aea80c9d3030cd23f4fb87cab3e66/body.js, line 1: unreachable code after return statement
+1559162811993	Marionette	INFO	Stopped listening on port 36933
+1559163419210	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.fYEVReYhObCu"
+1559163419635	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1559163419635	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1559163419636	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+1559163420611	Marionette	INFO	Listening on port 44469
+1559163420618	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://www.bundestag.de/resource/js/441486/0/420aea80c9d3030cd23f4fb87cab3e66/body.js, line 1: unreachable code after return statement
+JavaScript warning: https://www.bundestag.de/resource/js/441486/0/420aea80c9d3030cd23f4fb87cab3e66/body.js, line 1: unreachable code after return statement
+1559163424374	Marionette	INFO	Stopped listening on port 44469
+[Parent 11578, Gecko_IOThread] WARNING: pipe error: Broken pipe: file /build/firefox/src/mozilla-unified/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 726
+1559163593166	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.CPFdjWgLYyUP"
+1559163593574	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1559163593574	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1559163593574	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+1559163594509	Marionette	INFO	Listening on port 44485
+1559163594573	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://www.bundestag.de/resource/js/441486/0/420aea80c9d3030cd23f4fb87cab3e66/body.js, line 1: unreachable code after return statement
+JavaScript warning: https://www.bundestag.de/resource/js/441486/0/420aea80c9d3030cd23f4fb87cab3e66/body.js, line 1: unreachable code after return statement
+1559163596438	Marionette	INFO	Stopped listening on port 44485
+1559163649612	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.TYyZMNfvGEaK"
+1559163650014	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1559163650014	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1559163650014	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+1559163650977	Marionette	INFO	Listening on port 36623
+1559163651018	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://www.bundestag.de/resource/js/441486/0/420aea80c9d3030cd23f4fb87cab3e66/body.js, line 1: unreachable code after return statement
+JavaScript warning: https://www.bundestag.de/resource/js/441486/0/420aea80c9d3030cd23f4fb87cab3e66/body.js, line 1: unreachable code after return statement
+1559163655519	Marionette	INFO	Stopped listening on port 36623
+[Parent 12290, Gecko_IOThread] WARNING: pipe error: Broken pipe: file /build/firefox/src/mozilla-unified/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 726
+1559163715234	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.0txv9t8xR7ck"
+1559163715648	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1559163715648	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1559163715648	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+1559163716560	Marionette	INFO	Listening on port 37919
+1559163716642	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://www.bundestag.de/resource/js/441486/0/420aea80c9d3030cd23f4fb87cab3e66/body.js, line 1: unreachable code after return statement
+JavaScript warning: https://www.bundestag.de/resource/js/441486/0/420aea80c9d3030cd23f4fb87cab3e66/body.js, line 1: unreachable code after return statement
+1559163718349	Marionette	INFO	Stopped listening on port 37919
+1559163748253	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.KdIdM5N9Y28k"
+1559163748659	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1559163748659	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1559163748659	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+1559163749567	Marionette	INFO	Listening on port 36565
+1559163749657	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://www.bundestag.de/resource/js/441486/0/420aea80c9d3030cd23f4fb87cab3e66/body.js, line 1: unreachable code after return statement
+JavaScript warning: https://www.bundestag.de/resource/js/441486/0/420aea80c9d3030cd23f4fb87cab3e66/body.js, line 1: unreachable code after return statement
+1559163752469	Marionette	INFO	Stopped listening on port 36565
+1559163765092	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.Ik3ITcQHgV1f"
+1559163765500	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1559163765500	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1559163765500	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+1559163766435	Marionette	INFO	Listening on port 44721
+1559163766496	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://www.bundestag.de/resource/js/441486/0/420aea80c9d3030cd23f4fb87cab3e66/body.js, line 1: unreachable code after return statement
+JavaScript warning: https://www.bundestag.de/resource/js/441486/0/420aea80c9d3030cd23f4fb87cab3e66/body.js, line 1: unreachable code after return statement
+1559163769226	Marionette	INFO	Stopped listening on port 44721
+[Parent 13208, Gecko_IOThread] WARNING: pipe error (60): Connection reset by peer: file /build/firefox/src/mozilla-unified/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 357
+[Parent 13208, Gecko_IOThread] WARNING: pipe error: Broken pipe: file /build/firefox/src/mozilla-unified/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 726
+1559163816143	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.GiEKL5zfFHye"
+1559163816532	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1559163816532	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1559163816532	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+1559163817485	Marionette	INFO	Listening on port 36437
+1559163817547	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://www.bundestag.de/resource/js/441486/0/420aea80c9d3030cd23f4fb87cab3e66/body.js, line 1: unreachable code after return statement
+JavaScript warning: https://www.bundestag.de/resource/js/441486/0/420aea80c9d3030cd23f4fb87cab3e66/body.js, line 1: unreachable code after return statement
+1559163823120	Marionette	INFO	Stopped listening on port 36437
