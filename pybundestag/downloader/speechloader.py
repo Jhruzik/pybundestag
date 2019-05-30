@@ -11,7 +11,9 @@ def get_links(browser = "Firefox"):
     """
     This function will return the links
     to the five most recent Bundestag
-    protocols in XML format.
+    protocols in XML format. You can
+    use those links in your scripts
+    to download these links.
     """
     # Open Website in Selenium
     browser = browser.lower()
